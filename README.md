@@ -24,7 +24,7 @@ unzip pleiotropyPlot_example.zip
 ```
 
 Run the following code in R to run the example. Before execution, it is necessary to enter the path where the sample files are saved in the provided code.
-```
+```R
 library(pleiotropyPlot)
 
 example_folder = [path to the folder containing example files]
