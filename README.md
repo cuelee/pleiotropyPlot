@@ -2,7 +2,7 @@
 
 The pleiotropy plot is a tool designed to interpret SNP association studies obtained using pleio software ([link](https://github.com/hanlab-SNU/pleio)). To install the pleiotropyPlot on your local machine, please run the following commands in R:
 
-```
+```R
 install.packages("devtools")
 install.packages("roxygen2")
 devtools::install_github("cuelee/pleiotropyPlot")
