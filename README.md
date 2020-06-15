@@ -23,6 +23,12 @@ wget https://www.dropbox.com/s/2jeoh4149sofjub/pleiotropyPlot_example.zip
 unzip pleiotropyPlot_example.zip
 ```
 
+
+After finishing the installation, you can generate circoplot implemented in pleio using the following command.
+```
+library(pleiotropyPlot)
+```
+
 To run the example files above, please run the following code in R. Before execution, it is necessary to enter the path where the sample files are saved in the provided code (which is marked by using `[[marked]]`.
 ```R
 library(pleiotropyPlot)
