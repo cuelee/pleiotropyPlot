@@ -32,15 +32,8 @@ EHtoSH = function(hex_col){
 #' @export
 pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, snp_reference, eta_col = c('#E77E23','#309F86'), rg_col = c('#F51929','#2341F6'), link_hex = 3, size_scale = 0.6, pleioplot_palette = paste(rainbow_palete_hex, default_alpha, sep='') ){
 
-  pleioin = dat$pleioin
-  pleiores = dat$pleiores
-  snp_reference = dat$ref
-  sumstats = dat$sumstats
-  rg_matrix = dat$rg
-  h2 = dat$h2
-  traits = colnames(dat$rg)
-
   ## gen inputs
+  pleiores$pleio_p <- sapply(pleiores$pleio_p,maxp)
   traits = colnames(rg_matrix)
   pleio_out = pleiores[snp,]
 
