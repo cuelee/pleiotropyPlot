@@ -27,7 +27,7 @@ Run the following code in R to run the example. Before execution, it is necessar
 ```R
 library(pleiotropyPlot)
 
-example_folder = [`path to the folder containing example files`]
+example_folder = [[path to the folder containing example files]]
 
 pleioin = gzfile(file.path(example_folder, 'input.txt.gz'))
 pleiores = gzfile(file.path(example_folder, 'output.txt.gz'))
