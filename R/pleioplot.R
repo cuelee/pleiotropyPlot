@@ -117,7 +117,7 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
                track.height = 0.2,
                panel.fun = function(x, y)
                {
-                 circos.segments(x0=-0.9, y0 = 4, x1=0.9, y1=4, lty = 4, lwd = 0.1, col = '#FF000088')
+                 circlize::circos.segments(x0=-0.9, y0 = 4, x1=0.9, y1=4, lty = 4, lwd = 0.1, col = '#FF000088')
                }
   )
 
