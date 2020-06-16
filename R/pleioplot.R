@@ -195,7 +195,7 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
 
   col_fun_link = circlize::colorRamp2(x_legend, sapply(y_legend, EHtoSH))
 
-  lgd_links = ComplexHeatmap::Legend(at = rev(seq(-1,1,0.5)), labels = rev(seq(-1,1,0.5)), col_fun = col_fun_link, title_position = "topleft", title = bquote(r[g]),labels_gp = gpar(fontsize = 5), direction = "vertical", grid_width = unit(0.3,'cm'))
+  lgd_links = ComplexHeatmap::Legend(at = rev(seq(-1,1,0.5)), labels = rev(seq(-1,1,0.5)), col_fun = col_fun_link, title_position = "topleft", title = bquote(r[g]),labels_gp = grid::gpar(fontsize = 5), direction = "vertical", grid_width = unit(0.3,'cm'))
 
   #draw(lgd_links, x = unit(0.03, "npc"), y = unit(0.2, "npc"), just = c("left", "top"))
 
@@ -221,7 +221,7 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
     at_eta = c(formatC(as.numeric(min(eta)),format='E',digit=2), 0,formatC(as.numeric(max(eta)),format='E',digit=2))
   }
 
-  lgd_eta = ComplexHeatmap::Legend(at = round(as.numeric(at_eta),3), labels = at_eta, col_fun = col_fun_beta, title = bquote(eta), labels_gp = gpar(fontsize = 5), grid_width = unit(0.3,'cm'))
+  lgd_eta = ComplexHeatmap::Legend(at = round(as.numeric(at_eta),3), labels = at_eta, col_fun = col_fun_beta, title = bquote(eta), labels_gp = grid::gpar(fontsize = 5), grid_width = unit(0.3,'cm'))
 
   lgd_list_horizontal = ComplexHeatmap::packLegend(lgd_links, lgd_eta, direction = "horizontal")
 
