@@ -78,14 +78,14 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
   }
   names(p) = traits
 
-  circos.clear()
+  circlize::circos.clear()
 
-  circos.par(start.degree = 0, canvas.xlim = c(-1/size_scale,1/size_scale), gap.degree = 2, cell.padding = c(0,0,0,0), canvas.ylim = c(-1.5,1.5), points.overflow.warning=F)
-  circos.initialize(factors = traits, xlim = c(-1, 1))
+  circlize::circos.par(start.degree = 0, canvas.xlim = c(-1/size_scale,1/size_scale), gap.degree = 2, cell.padding = c(0,0,0,0), canvas.ylim = c(-1.5,1.5), points.overflow.warning=F)
+  circlize::circos.initialize(factors = traits, xlim = c(-1, 1))
 
   ##  Track 1
   cex_text = 0.6
-  circos.track(factors = traits, x = rep(-0.3,length(traits)), y = rep(0, length(traits)), ylim = c(-0.01,0.01),
+  circlize::circos.track(factors = traits, x = rep(-0.3,length(traits)), y = rep(0, length(traits)), ylim = c(-0.01,0.01),
                bg.col = NA,
                bg.border = NA,
                track.height = 0.05,
@@ -107,7 +107,7 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
   for(trait in traits){
     ymax = max(c(ymax, manhattanplot_y[[trait]]))
   }
-  circos.track(ylim = c(ymin, ymax),
+  circlize::circos.track(ylim = c(ymin, ymax),
                x = rep(0,length(traits)),
                y = rep(0,length(traits)),
                bg.col = NA,
@@ -122,7 +122,7 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
   )
 
   for (trait in traits){
-    circos.points(x = manhattanplot_x,
+    circlize::circos.points(x = manhattanplot_x,
                   y = manhattanplot_y[[trait]],
                   sector.index = trait,
                   track.index = 2,
@@ -131,7 +131,7 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
                   #lwd = 0.3,
                   col = col_mat[, trait]
     )
-    circos.points(x = 0,
+    circlize::circos.points(x = 0,
                   y = y_snp[[trait]],
                   sector.index = trait,
                   track.index = 2,
@@ -145,10 +145,10 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
   yl = 1
   yp = 0.4
   ci_lwd=0.5
-  circos.par("track.height" = 0.08)
+  circlize::circos.par("track.height" = 0.08)
   xl = eta_ci[[1]]/max(abs(eta))
   xu = eta_ci[[2]]/max(abs(eta))
-  circos.track(ylim = c(-yl, yl),
+  circlize::circos.track(ylim = c(-yl, yl),
                x = 0.8 * eta/(max(abs(eta))),
                y=rep(0,length(eta)),
                bg.col = NA,
@@ -181,21 +181,21 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
     point2=as.numeric(as.matrix(ldf[i,c('t_rstart','t_rend')]))
     hex = format(as.hexmode(max(floor((abs(min(sign,1)))^(link_hex)*255-1),0)),width=2, upper.case=T)
     if(sign>0){
-      circos.link(sector.index1, point1, sector.index2, point2, col=paste(rg_col[1], hex,sep=''), h.ratio=hr)
+      circlize::circos.link(sector.index1, point1, sector.index2, point2, col=paste(rg_col[1], hex,sep=''), h.ratio=hr)
     }
     if(sign<0){
-      circos.link(sector.index1, point1, sector.index2, point2, col=paste(rg_col[2], hex,sep=''), h.ratio=hr)
+      circlize::circos.link(sector.index1, point1, sector.index2, point2, col=paste(rg_col[2], hex,sep=''), h.ratio=hr)
     }
   }
-  circos.clear()
+  circlize::circos.clear()
 
   ## Legend
   x_legend = rev(seq(-1,1,0.1))
   y_legend = c((paste(rg_col[1],format(as.hexmode(sapply(floor(abs(x_legend[x_legend>0])^link_hex*255-1), function(x) max(x,0))),width=2,upper.case=T),sep='')),'#FFFFFFFF', rev(paste(rg_col[2],format(as.hexmode(sapply(floor(abs(x_legend[x_legend>0])^link_hex*255-1),function(x) max(x,0))),width=2, upper.case=T),sep='')))
 
-  col_fun_link = colorRamp2(x_legend, sapply(y_legend, EHtoSH))
+  col_fun_link = circlize::colorRamp2(x_legend, sapply(y_legend, EHtoSH))
 
-  lgd_links = Legend(at = rev(seq(-1,1,0.5)), labels = rev(seq(-1,1,0.5)), col_fun = col_fun_link, title_position = "topleft", title = bquote(r[g]),labels_gp = gpar(fontsize = 5), direction = "vertical", grid_width = unit(0.3,'cm'))
+  lgd_links = ComplexHeatmap::Legend(at = rev(seq(-1,1,0.5)), labels = rev(seq(-1,1,0.5)), col_fun = col_fun_link, title_position = "topleft", title = bquote(r[g]),labels_gp = gpar(fontsize = 5), direction = "vertical", grid_width = unit(0.3,'cm'))
 
   #draw(lgd_links, x = unit(0.03, "npc"), y = unit(0.2, "npc"), just = c("left", "top"))
 
@@ -221,9 +221,9 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
     at_eta = c(formatC(as.numeric(min(eta)),format='E',digit=2), 0,formatC(as.numeric(max(eta)),format='E',digit=2))
   }
 
-  lgd_eta = Legend(at = round(as.numeric(at_eta),3), labels = at_eta, col_fun = col_fun_beta, title = bquote(eta), labels_gp = gpar(fontsize = 5), grid_width = unit(0.3,'cm'))
+  lgd_eta = ComplexHeatmap::Legend(at = round(as.numeric(at_eta),3), labels = at_eta, col_fun = col_fun_beta, title = bquote(eta), labels_gp = gpar(fontsize = 5), grid_width = unit(0.3,'cm'))
 
-  lgd_list_horizontal = packLegend(lgd_links, lgd_eta, direction = "horizontal")
+  lgd_list_horizontal = ComplexHeatmap::packLegend(lgd_links, lgd_eta, direction = "horizontal")
 
-  draw(lgd_list_horizontal, x = unit(0.09, "npc"), y = unit(0.99, "npc") , just = c("top"))
+  ComplexHeatmap::draw(lgd_list_horizontal, x = unit(0.09, "npc"), y = unit(0.99, "npc") , just = c("top"))
 }
