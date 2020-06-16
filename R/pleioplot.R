@@ -90,15 +90,15 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
                bg.border = NA,
                track.height = 0.05,
                panel.fun = function(x, y) {
-                 circos.text(x = x, y = CELL_META$cell.ylim[2] + uy(2, "mm"),
+                 circlize::circos.text(x = x, y = CELL_META$cell.ylim[2] + uy(2, "mm"),
                              labels = sapply(CELL_META$sector.index, function(x) paste('',x,sep='')), facing='clockwise', niceFacing =T, adj = c(0,0), cex = cex_text, font = 4 )
-                 circos.text(x = x+0.4, y = CELL_META$cell.ylim[2] + uy(2, "mm"),
+                 circlize::circos.text(x = x+0.4, y = CELL_META$cell.ylim[2] + uy(2, "mm"),
                              labels = paste('P =', formatC(p[CELL_META$sector.index],format='E',digit=2),sep='') , facing='clockwise', niceFacing =T,  adj = c(0,0), cex = cex_text, font = 3)
 
-                 circos.text(x = x+0.8, y = CELL_META$cell.ylim[2] + uy(2, "mm"),
+                 circlize::circos.text(x = x+0.8, y = CELL_META$cell.ylim[2] + uy(2, "mm"),
                              labels = paste('BETA: ',formatC(as.numeric(sumstats_beta[CELL_META$sector.index]),format='E',digit=1,drop0trailing=T), sep = ''), facing='clockwise', niceFacing =T,  adj = c(0,0), cex = cex_text, font = 3)
 
-                 circos.rect(xleft = -1, xright = 1, ybottom = -0.005, ytop = 0.005, border = NA, col= col_mat[1,CELL_META$sector.index])
+                 circlize::circos.rect(xleft = -1, xright = 1, ybottom = -0.005, ytop = 0.005, border = NA, col= col_mat[1,CELL_META$sector.index])
                })
 
   ##  Track 2
@@ -158,17 +158,17 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
                track.height = 0.08,
                panel.fun = function(x, y)
                {
-                 circos.segments(x0=0, y0 = -yl*0.8, x1=0, y1=yl*0.8, lty = 4, lwd = 0.5, col = '#000000AA')
+                 circlize::circos.segments(x0=0, y0 = -yl*0.8, x1=0, y1=yl*0.8, lty = 4, lwd = 0.5, col = '#000000AA')
                  if (x>0){
-                   circos.rect(xleft = min(x,0), xright = max(x,0), ybottom = -yl*yp, ytop = yl*yp, border = NA, col= eta_col[1])
+                   circlize::circos.rect(xleft = min(x,0), xright = max(x,0), ybottom = -yl*yp, ytop = yl*yp, border = NA, col= eta_col[1])
                  }
                  else if (x<0){
-                   circos.rect(xleft = min(x,0), xright = max(x,0), ybottom = -yl*yp, ytop = yl*yp, border = NA, col= eta_col[2])
+                   circlize::circos.rect(xleft = min(x,0), xright = max(x,0), ybottom = -yl*yp, ytop = yl*yp, border = NA, col= eta_col[2])
                  }
 
-                 circos.segments(x0=max(-1, xl[1,CELL_META$sector.index]), y0=0, x1 = min(1, xu[1,CELL_META$sector.index]), y1=0,lwd = ci_lwd, col = '#000000AA')
-                 circos.segments(x0=max(-1, xl[1,CELL_META$sector.index]), y0 = - yl*yp*0.4, x1=max(-1, xl[1,CELL_META$sector.index]), y1 = yl*yp*0.6,lwd = ci_lwd, col = '#000000AA')
-                 circos.segments(x0= min(1,xu[1,CELL_META$sector.index]), y0 = - yl*yp*0.4, x1= min(1,xu[1,CELL_META$sector.index]), y1 = yl*yp*0.6,lwd = ci_lwd, col = '#000000AA')
+                 circlize::circos.segments(x0=max(-1, xl[1,CELL_META$sector.index]), y0=0, x1 = min(1, xu[1,CELL_META$sector.index]), y1=0,lwd = ci_lwd, col = '#000000AA')
+                 circlize::circos.segments(x0=max(-1, xl[1,CELL_META$sector.index]), y0 = - yl*yp*0.4, x1=max(-1, xl[1,CELL_META$sector.index]), y1 = yl*yp*0.6,lwd = ci_lwd, col = '#000000AA')
+                 circlize::circos.segments(x0= min(1,xu[1,CELL_META$sector.index]), y0 = - yl*yp*0.4, x1= min(1,xu[1,CELL_META$sector.index]), y1 = yl*yp*0.6,lwd = ci_lwd, col = '#000000AA')
                })
 
   ##  Track links
