@@ -1,8 +1,8 @@
 # pleiotropyPlot
 
-The pleiotropy plot is a tool designed to interpret SNP association studies obtained using pleio software ([link](https://github.com/hanlab-SNU/pleio)). To install the pleiotropyPlot on your local machine, please run the following commands in R:
+The `pleiotropy plot` is a tool designed to interpret SNP association studies obtained using `PLEIO` ([link](https://github.com/hanlab-SNU/pleio)). To install the R package on your local machine, please run the following commands in R:
 
-```
+```R
 install.packages("devtools")
 install.packages("roxygen2")
 devtools::install_github("cuelee/pleiotropyPlot")
@@ -15,7 +15,7 @@ circlize (>= 0.4.8)
 ```
 
 
-For users who have never used SOFT, you can download an example data from the following [link](https://www.dropbox.com/s/2jeoh4149sofjub/pleiotropyPlot_example.zip).
+For users who have never used `pleiotropyPlot`, you can download an example data from the following [link](https://www.dropbox.com/s/2jeoh4149sofjub/pleiotropyPlot_example.zip).
 
 Or use wget
 ```
@@ -23,11 +23,17 @@ wget https://www.dropbox.com/s/2jeoh4149sofjub/pleiotropyPlot_example.zip
 unzip pleiotropyPlot_example.zip
 ```
 
-Run the following code in R to run the example. Before execution, it is necessary to enter the path where the sample files are saved in the provided code.
+
+After finishing the installation, you can generate circoplot implemented in pleio using the following command.
 ```
 library(pleiotropyPlot)
+```
 
-example_folder = [path to the folder containing example files]
+To run the example files above, please run the following code in R. Before execution, it is necessary to enter the path where the sample files are saved in the provided code (which is marked by using `[[marked]]`.
+```R
+library(pleiotropyPlot)
+
+example_folder = [[path to the folder containing example files]]
 
 pleioin = gzfile(file.path(example_folder, 'input.txt.gz'))
 pleiores = gzfile(file.path(example_folder, 'output.txt.gz'))
