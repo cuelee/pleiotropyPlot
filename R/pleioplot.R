@@ -74,7 +74,7 @@ pleioplot =  function(snp, traits, rg_matrix, sumstats, pleioin, pleiores, h2, s
 
   p=rep(0,length(traits))
   for (i in 1:length(traits)){
-    p[i] = 10^(y_snp[[traits[i]]])
+    p[i] = 10^(-y_snp[[traits[i]]])
   }
   names(p) = traits
 
